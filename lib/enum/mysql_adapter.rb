@@ -11,7 +11,7 @@ adapter_class.module_eval do
 
   def native_database_types #:nodoc
     types = __native_database_types_enum
-    types[:enum] = { :name => "enum" }
+    types[:enum] = { name: "enum" }
     types
   end
 end

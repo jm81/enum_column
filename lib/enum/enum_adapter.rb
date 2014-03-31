@@ -1,7 +1,6 @@
 # This module provides all the column helper methods to deal with the
 # values and adds the common type management code for the adapters.
 
-
 # try rails 3.1, then rails 3.2+, mysql column adapters
 column_class = if defined? ActiveRecord::ConnectionAdapters::Mysql2Column
   ActiveRecord::ConnectionAdapters::Mysql2Column
@@ -37,17 +36,8 @@ column_class.module_eval do
     end
   end
 
-  alias __type_cast_code_enum type_cast_code
-  # Code to convert to a symbol.
-  def type_cast_code(var_name)
-    if type == :enum
-      "#{var_name}.is_a?(Symbol) ? #{var_name} : #{string_to_valid_enum_hash_code}[#{var_name}]"
-    else
-      __type_cast_code_enum(var_name)
-    end
-  end
+  private
 
-private
   alias __simplified_type_enum simplified_type
   # The enum simple type.
   def simplified_type(field_type)
