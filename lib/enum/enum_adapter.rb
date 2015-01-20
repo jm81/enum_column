@@ -26,7 +26,7 @@ column_class.module_eval do
     end
   end
 
-  alias __type_cast_enum type_cast
+  alias __type_cast_enum type_cast_for_database
   # Convert to a symbol.
   def type_cast(value)
     if type == :enum
