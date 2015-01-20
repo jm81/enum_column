@@ -38,16 +38,6 @@ column_class.module_eval do
 
   private
 
-  alias __simplified_type_enum simplified_type
-  # The enum simple type.
-  def simplified_type(field_type)
-    if field_type =~ /enum/i
-      :enum
-    else
-      __simplified_type_enum(field_type)
-    end
-  end
-
   alias __extract_limit_enum extract_limit
   def extract_limit(sql_type)
     if sql_type =~ /^enum/i
