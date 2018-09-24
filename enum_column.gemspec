@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
-  s.name    = 'enum_column_strict'
-  s.version = '0.0.2'
+  s.name    = 'enum_column_jm81'
+  s.version = '0.0.3'
   s.authors = ['Nick Pohodnya', 'Aaron Weiner']
   s.email   = 'aweiner@mdsol.com'
 

@@ -38,15 +38,6 @@ column_class.module_eval do
 
   private
 
-  alias __extract_limit_enum extract_limit
-  def extract_limit(sql_type)
-    if sql_type =~ /^enum/i
-      sql_type.sub(/^enum\('(.+)'\)/i, '\1').split("','").map { |v| v.intern }
-    else
-      __extract_limit_enum(sql_type)
-    end
-  end
-
   def string_to_valid_enum(str)
     @valid_strings_filter ||= Hash[enum_valid_string_assoc]
     @valid_strings_filter[str]
@@ -60,4 +51,15 @@ column_class.module_eval do
     limit.map(&:to_s).zip(limit)
   end
 
+end
+
+ActiveRecord::ConnectionAdapters::AbstractAdapter.module_eval do
+  alias __extract_limit_enum extract_limit
+  def extract_limit(sql_type)
+    if sql_type =~ /^enum/i
+      sql_type.sub(/^enum\('(.+)'\)/i, '\1').split("','").map { |v| v.intern }
+    else
+      __extract_limit_enum(sql_type)
+    end
+  end
 end
