@@ -1,3 +1,9 @@
+Note
+
+  This particular repo is me experimenting with enums in Rails 4.2.10.
+  See rails4-2-10.rb for a simple file that gets me the basic functionality I
+  wanted (at least so far) -- jm81
+
 Overview
 
   This gem is an extension to ActiveRecord which enables native support of enumerations in the database schema using the ENUM type in MySQL.
